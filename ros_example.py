@@ -33,7 +33,7 @@ class Telekinesis:
             
             #Set the position of the hand when you're done
             stater = JointState()
-            stater.position = np.array([3.2106218338012695, 4.647961616516113, 4.878058910369873, 3.2719810009002686, 3.069495439529419, 4.477689743041992, 4.878058910369873, 3.4039034843444824, 3.1185829639434814, 4.700117111206055, 4.9271464347839355, 3.2781169414520264, 3.4990100860595703, 1.2655341625213623, 3.6017868518829346, 5.0529327392578125])
+            stater.position = np.array(curr_pos)
             self.pub_hand.publish(stater)  ##choose the right embodiment here
 if __name__ == "__main__":
     rospy.init_node("ros_example")

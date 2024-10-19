@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
-import numpy as np
 import rospy
+import random
+import numpy as np
 
 from sensor_msgs.msg import JointState
 from std_msgs.msg import String
@@ -76,12 +77,9 @@ class LeapNode:
         #Max at current (in unit 1ma) so don't overheat and grip too hard #500 normal or #350 for lite
         self.dxl_client.sync_write(motors, np.ones(len(motors)) * self.curr_lim, 102, 2)
         self.dxl_client.write_desired_pos(self.motors, self.curr_pos)
+        
+        # Implement the service to change the hand state
         while not rospy.is_shutdown():
-            # joint_states = np.array([3.1416,4.1888,4.5553,4.4157,3.1416,4.1190,5.1487,4.2412,3.1416,4.2237,4.7124,4.4506,2.6005,1.5184,4.6775,4.4157])  # Rock State
-            # joint_states = np.array([3.1416,3.1416,3.1416,3.1416,3.1416,3.1416,3.1416,3.1416,3.1416,3.1416,3.1416,3.1416,3.1416,3.1416,3.1416,3.1416])  # Paper State
-            # joint_states = np.array([3.1416,3.1416,3.1416,3.1416,3.1416,3.1416,3.1416,3.1416,3.1416,4.2237,4.7124,4.4506,2.6005,1.5184,4.6775,4.4157 ])    # Scissors State
-            joint_states = np.array([4.466951847076416, 2.7749712467193604, 3.9684083461761475, 5.152641296386719, 3.1216509342193604, 2.8470683097839355, 4.534447193145752, 5.0866804122924805, 1.5401166677474976, 2.8025829792022705, 4.385651111602783, 5.066738605499268, 3.443786859512329, 1.287009835243225, 4.474621772766113, 5.0698065757751465])
-            self.set_joint_states(joint_states)
             rospy.spin()
 
     #Receive LEAP pose and directly control the robot
