@@ -7,7 +7,7 @@ from std_msgs.msg import String
 
 from leap_hand_utils.dynamixel_client import *
 import leap_hand_utils.leap_hand_utils as lhu
-from leap_hand.srv import *
+from srv import leap_position, leap_velocity, leap_effort
 #######################################################
 """This Controls the LEAP Hand and also sets up ros services that allow you to query the hand.
 
