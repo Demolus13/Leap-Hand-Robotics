@@ -7,7 +7,8 @@ from std_msgs.msg import String
 
 from leap_hand_utils.dynamixel_client import *
 import leap_hand_utils.leap_hand_utils as lhu
-from srv import leap_position, leap_velocity, leap_effort
+from leap_hand.srv import *
+
 #######################################################
 """This Controls the LEAP Hand and also sets up ros services that allow you to query the hand.
 
@@ -63,6 +64,7 @@ class LeapNode:
             except Exception:
                 self.dxl_client = DynamixelClient(motors, '/dev/ttyUSB2', 4000000)
                 self.dxl_client.connect()
+
         #Enables position-current control mode and the default parameters, it commands a position and then caps the current so the motors don't overload
         self.dxl_client.sync_write(motors, np.ones(len(motors))*5, 11, 1)
         self.dxl_client.set_torque_enabled(motors, True)
@@ -75,6 +77,11 @@ class LeapNode:
         self.dxl_client.sync_write(motors, np.ones(len(motors)) * self.curr_lim, 102, 2)
         self.dxl_client.write_desired_pos(self.motors, self.curr_pos)
         while not rospy.is_shutdown():
+            # joint_states = np.array([3.1416,4.1888,4.5553,4.4157,3.1416,4.1190,5.1487,4.2412,3.1416,4.2237,4.7124,4.4506,2.6005,1.5184,4.6775,4.4157])  # Rock State
+            # joint_states = np.array([3.1416,3.1416,3.1416,3.1416,3.1416,3.1416,3.1416,3.1416,3.1416,3.1416,3.1416,3.1416,3.1416,3.1416,3.1416,3.1416])  # Paper State
+            # joint_states = np.array([3.1416,3.1416,3.1416,3.1416,3.1416,3.1416,3.1416,3.1416,3.1416,4.2237,4.7124,4.4506,2.6005,1.5184,4.6775,4.4157 ])    # Scissors State
+            joint_states = np.array([4.466951847076416, 2.7749712467193604, 3.9684083461761475, 5.152641296386719, 3.1216509342193604, 2.8470683097839355, 4.534447193145752, 5.0866804122924805, 1.5401166677474976, 2.8025829792022705, 4.385651111602783, 5.066738605499268, 3.443786859512329, 1.287009835243225, 4.474621772766113, 5.0698065757751465])
+            self.set_joint_states(joint_states)
             rospy.spin()
 
     #Receive LEAP pose and directly control the robot
@@ -105,10 +112,14 @@ class LeapNode:
     #Service that reads and returns the effort/current of the robot in LEAP Embodiment
     def eff_srv(self, req):
         return {"effort": self.dxl_client.read_cur()}
+    
+    def set_joint_states(self, joint_states):
+        self.dxl_client.write_desired_pos(self.motors, joint_states)
 #init the arm node
 def main(**kwargs):
     rospy.init_node("leaphand_node")
     leaphand_node = LeapNode()
+    
 '''
 Init node
 '''
