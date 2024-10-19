@@ -9,7 +9,7 @@ from sensor_msgs.msg import JointState
 
 from leap_hand_utils.dynamixel_client import *
 import leap_hand_utils.leap_hand_utils as lhu
-from leap_hand.srv import *
+from srv import leap_position, leap_velocity, leap_effort
 
 # This is example code, it reads the position from LEAP Hand and commands it
 # Be sure to query the services only when you need it
