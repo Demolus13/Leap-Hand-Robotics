@@ -1,0 +1,3 @@
+[submodule "hand_gesture"]
+	path = hand_gesture
+	url = https://github.com/Demolus13/Hand-Gesture-Recognition-Model.git

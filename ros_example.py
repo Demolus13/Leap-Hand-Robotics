@@ -9,7 +9,7 @@ from sensor_msgs.msg import JointState
 
 from leap_hand_utils.dynamixel_client import *
 import leap_hand_utils.leap_hand_utils as lhu
-from leap_hand.srv import leap_position, leap_velocity, leap_effort
+from leap_hand.srv import *
 
 # This is example code, it reads the position from LEAP Hand and commands it
 # Be sure to query the services only when you need it
@@ -33,7 +33,7 @@ class Telekinesis:
             
             #Set the position of the hand when you're done
             stater = JointState()
-            stater.position = np.array(curr_pos)
+            stater.position = np.zeros(16)
             self.pub_hand.publish(stater)  ##choose the right embodiment here
 if __name__ == "__main__":
     rospy.init_node("ros_example")

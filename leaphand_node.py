@@ -80,6 +80,8 @@ class LeapNode:
         
         # Implement the service to change the hand state
         while not rospy.is_shutdown():
+            joint_states = np.array([3.1416,4.1888,4.5553,4.4157,3.1416,4.1190,5.1487,4.2412,3.1416,4.2237,4.7124,4.4506,2.6005,1.5184,4.6775,4.4157])
+            self.set_joint_states(joint_states)
             rospy.spin()
 
     #Receive LEAP pose and directly control the robot
