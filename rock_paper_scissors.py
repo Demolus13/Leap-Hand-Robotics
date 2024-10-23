@@ -173,8 +173,8 @@ class LeapHandController:
     def play_competitive(self):
         while True:
             # Press Enter to play
-            input("Press Enter to play a round of Rock, Paper, Scissors or type 'quit' to exit: ").strip().lower()
-            if input == 'quit':
+            command = input("Press Enter to play a round of Rock, Paper, Scissors or type 'quit' to exit: ").strip().lower()
+            if command == 'quit':
                 break
             
             # Countdown
@@ -218,8 +218,8 @@ class LeapHandController:
     def play_casual(self):
         while True:
             # Press Enter to play
-            input("Press Enter to play a round of Rock, Paper, Scissors or type 'quit' to exit: ").strip().lower()
-            if input == 'quit':
+            command = input("Press Enter to play a round of Rock, Paper, Scissors or type 'quit' to exit: ").strip().lower()
+            if command == 'quit':
                 break
             
             # Countdown
@@ -271,7 +271,7 @@ class LeapHandController:
                 print("Invalid mode. Please choose 'competitive' or 'casual'.")
 
             # Display the final scores
-            print(f"Final Score -> User: {self.user_score} | Computer: {self.computer_score}")
+            print(f"Final Score -> User: {self.user_score} | Computer: {self.computer_score}\n")
 
             # Reset the scores
             self.user_score = 0
