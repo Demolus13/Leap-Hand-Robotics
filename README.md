@@ -76,3 +76,5 @@ self.states = {
     - The webcam will open and you can perform different stored gestures to check the accuracy of the model
 
 Follow the above steps for simulating the on Leap Hand Hardware
+
+https://github.com/user-attachments/assets/a1c1eca8-04b9-4a89-a0da-8a8b30c01b97
