@@ -1,5 +1,5 @@
 ## Welcome to the LEAP Hand ROS1 SDK - Rock, Paper, Scissor
-
+https://github.com/user-attachments/assets/a1c1eca8-04b9-4a89-a0da-8a8b30c01b97
 ## Prerequisites
 - **Operating System:** Ubuntu 20.04
 - **ROS Version:** Noetic
@@ -77,4 +77,4 @@ self.states = {
 
 Follow the above steps for simulating the on Leap Hand Hardware
 
-https://github.com/user-attachments/assets/a1c1eca8-04b9-4a89-a0da-8a8b30c01b97
+
