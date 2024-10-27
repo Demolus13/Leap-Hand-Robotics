@@ -75,6 +75,6 @@ self.states = {
 4. **Evaluating model** using the script `evaluate_model.py`
     - The webcam will open and you can perform different stored gestures to check the accuracy of the model
 
-Follow the above steps for simulating the on Leap Hand Hardware
+Follow the above steps for simulating on the Leap Hand Hardware
 
 
